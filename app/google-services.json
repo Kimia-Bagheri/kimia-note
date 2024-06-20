@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "983464815377",
+    "project_id": "bulletjournal-cf0e4",
+    "storage_bucket": "bulletjournal-cf0e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983464815377:android:b06c02c4ee42166fc1fab0",
+        "android_client_info": {
+          "package_name": "com.kimia.bulletjournal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgNIW00_xL5oMz6MZoXUJhWOVv3WjiaKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
