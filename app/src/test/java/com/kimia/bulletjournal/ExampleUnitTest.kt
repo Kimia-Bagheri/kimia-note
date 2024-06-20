@@ -1,4 +1,4 @@
-package com.kimia.mynote
+package com.kimia.bulletjournal
 
 import org.junit.Test
 
