@@ -1,5 +1,4 @@
 package com.kimia.bulletjournal
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -21,6 +20,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+
         mAuth = FirebaseAuth.getInstance()
         logoutButton = findViewById(R.id.logoutButton)
         addNoteButton = findViewById(R.id.addNoteButton)
@@ -28,7 +28,7 @@ class HomeActivity : AppCompatActivity() {
 
         notesList = mutableListOf()
         notesAdapter = NotesAdapter(notesList)
-        notesRecyclerView.adapter = notesAdapter
+        notesAdapter.also { notesRecyclerView.adapter = it }
         notesRecyclerView.layoutManager = LinearLayoutManager(this)
 
         // Load notes from a local or remote database (this example uses dummy data)
@@ -49,6 +49,11 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, AddNoteActivity::class.java))
         }
     }
+
+    private fun Intent(homeActivity: HomeActivity , java: Any): Any {
+
+    })
+
 
     private fun loadNotes() {
         // Example of adding dummy data, replace this with actual data loading logic
