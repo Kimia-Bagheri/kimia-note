@@ -25,7 +25,6 @@ class HomeActivity : AppCompatActivity() {
         addNoteButton = findViewById(R.id.addNoteButton)
         notesRecyclerView = findViewById(R.id.notesRecyclerView)
 
-
         notesList = mutableListOf()
         notesAdapter = NotesAdapter(notesList)
         notesRecyclerView.adapter = notesAdapter
@@ -44,10 +43,12 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+
         addNoteButton.setOnClickListener {
             startActivity(Intent(this, AddNoteActivity::class.java))
         }
     }
+
 
     private fun loadNotes() {
         // Example of adding dummy data, replace this with actual data loading logic
