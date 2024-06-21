@@ -18,7 +18,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        emailEditText = findViewById(email = R.id.email)
+        emailEditText = findViewById(R.id.email)
         passwordEditText = findViewById(R.id.password)
         registerButton = findViewById(R.id.registerButton)
         mAuth = FirebaseAuth.getInstance()
@@ -44,13 +44,4 @@ class RegisterActivity : AppCompatActivity() {
                 }
         }
     }
-
-    private fun findViewById(email: Any): Any {
-
-    }
-
-    private fun setContentView(activityRegister: Any) {
-
-    }
 }
-

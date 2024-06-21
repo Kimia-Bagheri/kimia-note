@@ -20,15 +20,15 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-
         mAuth = FirebaseAuth.getInstance()
         logoutButton = findViewById(R.id.logoutButton)
         addNoteButton = findViewById(R.id.addNoteButton)
         notesRecyclerView = findViewById(R.id.notesRecyclerView)
 
+
         notesList = mutableListOf()
         notesAdapter = NotesAdapter(notesList)
-        notesAdapter.also { notesRecyclerView.adapter = it }
+        notesRecyclerView.adapter = notesAdapter
         notesRecyclerView.layoutManager = LinearLayoutManager(this)
 
         // Load notes from a local or remote database (this example uses dummy data)
@@ -44,16 +44,10 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
-
         addNoteButton.setOnClickListener {
             startActivity(Intent(this, AddNoteActivity::class.java))
         }
     }
-
-    private fun Intent(homeActivity: HomeActivity , java: Any): Any {
-
-    })
-
 
     private fun loadNotes() {
         // Example of adding dummy data, replace this with actual data loading logic
