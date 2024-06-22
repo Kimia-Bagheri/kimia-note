@@ -1,4 +1,5 @@
 package com.kimia.bulletjournal
+
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.saba.bulletjournal.R
 
 class HomeActivity : AppCompatActivity(), NotesAdapter.OnItemClickListener {
 
@@ -69,11 +71,11 @@ class HomeActivity : AppCompatActivity(), NotesAdapter.OnItemClickListener {
             }
         }
 
-
+        // Check current mode and set switch accordingly
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         switchDarkMode.isChecked = currentNightMode == Configuration.UI_MODE_NIGHT_YES
 
-
+        // Set listener for switch to change theme
         switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -154,7 +156,7 @@ class HomeActivity : AppCompatActivity(), NotesAdapter.OnItemClickListener {
                     notesList.remove(note)
                     deleteCount++
                     if (deleteCount == selectedNotes.size) {
-
+                        // همه یادداشتها حذف شدهاند
                         notesAdapter.notifyDataSetChanged()
                     }
                 }
@@ -163,7 +165,7 @@ class HomeActivity : AppCompatActivity(), NotesAdapter.OnItemClickListener {
                 }
         }
 
-
+        // حذف انتخابها بعد از حذف موفق
         notesAdapter.clearSelection()
     }
 
