@@ -29,7 +29,7 @@ class AddNoteActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-
+            // Save note logic here
             val note = Note(title, content)
             val resultIntent = Intent().apply {
                 putExtra("note", note)
