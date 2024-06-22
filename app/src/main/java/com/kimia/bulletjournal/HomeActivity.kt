@@ -73,7 +73,7 @@ class HomeActivity : AppCompatActivity(), NotesAdapter.OnItemClickListener {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         switchDarkMode.isChecked = currentNightMode == Configuration.UI_MODE_NIGHT_YES
 
-        // Set listener for switch to change theme
+
         switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -113,6 +113,7 @@ class HomeActivity : AppCompatActivity(), NotesAdapter.OnItemClickListener {
                     }
                     notesList.add(note)
                 }
+                notesList.sortByDescending { it.date }
                 notesAdapter.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
