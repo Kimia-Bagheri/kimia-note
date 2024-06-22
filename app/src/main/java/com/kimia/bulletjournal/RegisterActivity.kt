@@ -7,7 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.saba.bulletjournal.R
+import com.kimia.bulletjournal.R
 
 class RegisterActivity : AppCompatActivity() {
 
