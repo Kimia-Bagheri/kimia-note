@@ -5,13 +5,19 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class AddNoteActivity : AppCompatActivity() {
 
     private lateinit var noteTitleEditText: EditText
     private lateinit var noteContentEditText: EditText
     private lateinit var saveNoteButton: Button
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var mAuth: FirebaseAuth
+
     private var position: Int = -1
+    private var note: Note? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +27,13 @@ class AddNoteActivity : AppCompatActivity() {
         noteContentEditText = findViewById(R.id.noteContentEditText)
         saveNoteButton = findViewById(R.id.saveNoteButton)
 
-        val note = intent.getParcelableExtra<Note>("note")
+        firestore = FirebaseFirestore.getInstance()
+        mAuth = FirebaseAuth.getInstance()
+
+        note = intent.getParcelableExtra("note")
         if (note != null) {
-            noteTitleEditText.setText(note.title)
-            noteContentEditText.setText(note.content)
+            noteTitleEditText.setText(note!!.title)
+            noteContentEditText.setText(note!!.content)
             position = intent.getIntExtra("position", -1)
         }
 
