@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/maidenorange"
+            android:fontFamily="@font/Maidenorange"
             android:letterSpacing="0.1"
             android:text="Sign In"
             android:textColor="#000000"

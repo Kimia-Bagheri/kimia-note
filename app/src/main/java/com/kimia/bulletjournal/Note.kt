@@ -1,5 +1,4 @@
 package com.kimia.bulletjournal
-
 import android.os.Parcel
 import android.os.Parcelable
 import java.util.*
@@ -11,7 +10,7 @@ data class Note(
     var userId: String = "",
     var date: String = "",
     var imageUrl: String? = null,
-    var isChecked: Boolean = false // اضافه کردن متغیر isChecked
+    var isChecked: Boolean = false
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
@@ -20,7 +19,7 @@ data class Note(
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString(),
-        parcel.readByte() != 0.toByte() // خواندن isChecked از Parcel
+        parcel.readByte() != 0.toByte()
     )
 
     fun compareTo(other: Note): Int {
@@ -34,7 +33,7 @@ data class Note(
         parcel.writeString(userId)
         parcel.writeString(date)
         parcel.writeString(imageUrl)
-        parcel.writeByte(if (isChecked) 1 else 0) // نوشتن isChecked به Parcel
+        parcel.writeByte(if (isChecked) 1 else 0)
     }
 
     override fun describeContents(): Int {

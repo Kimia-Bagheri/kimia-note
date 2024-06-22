@@ -1,5 +1,4 @@
 package com.kimia.bulletjournal
-
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.saba.bulletjournal.R
 
 class HomeActivity : AppCompatActivity(), NotesAdapter.OnItemClickListener {
 
