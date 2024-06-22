@@ -3,7 +3,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -16,9 +16,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeActivity : AppCompatActivity(), NotesAdapter.OnItemClickListener {
 
-    private lateinit var logoutButton: Button
-    private lateinit var addNoteButton: Button
-    private lateinit var deleteNoteButton: Button
+    private lateinit var logoutButton: ImageButton
+    private lateinit var addNoteButton: ImageButton
+    private lateinit var deleteNoteButton: ImageButton
     private lateinit var switchDarkMode: Switch
     private lateinit var mAuth: FirebaseAuth
     private lateinit var notesRecyclerView: RecyclerView
@@ -154,7 +154,6 @@ class HomeActivity : AppCompatActivity(), NotesAdapter.OnItemClickListener {
                     notesList.remove(note)
                     deleteCount++
                     if (deleteCount == selectedNotes.size) {
-                        // همه یادداشتها حذف شدهاند
                         notesAdapter.notifyDataSetChanged()
                     }
                 }
@@ -163,7 +162,6 @@ class HomeActivity : AppCompatActivity(), NotesAdapter.OnItemClickListener {
                 }
         }
 
-        // حذف انتخابها بعد از حذف موفق
         notesAdapter.clearSelection()
     }
 

@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,11 +18,10 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class AddNoteActivity : AppCompatActivity() {
-
     private lateinit var noteTitleEditText: EditText
     private lateinit var noteContentEditText: EditText
     private lateinit var saveNoteButton: Button
-    private lateinit var selectImageButton: Button
+    private lateinit var selectImageButton: ImageButton  // Change the type to ImageButton
     private lateinit var imagesRecyclerView: RecyclerView
     private lateinit var firestore: FirebaseFirestore
     private lateinit var storageReference: StorageReference
@@ -40,7 +40,7 @@ class AddNoteActivity : AppCompatActivity() {
         noteTitleEditText = findViewById(R.id.noteTitleEditText)
         noteContentEditText = findViewById(R.id.noteContentEditText)
         saveNoteButton = findViewById(R.id.saveNoteButton)
-        selectImageButton = findViewById(R.id.selectImageButton)
+        selectImageButton = findViewById(R.id.selectImageButton)  // Correct the type here
         imagesRecyclerView = findViewById(R.id.imagesRecyclerView)
         noteDateEditText = findViewById(R.id.noteDateEditText)
         noteDateEditText.setText(getDefaultDate())
@@ -297,4 +297,4 @@ class AddNoteActivity : AppCompatActivity() {
     companion object {
         private const val REQUEST_CODE_IMAGE_PICK = 1
     }
-}
+}}
