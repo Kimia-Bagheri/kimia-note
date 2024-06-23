@@ -1,4 +1,5 @@
 package com.kimia.bulletjournal
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +28,7 @@ class NotesAdapter(
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val note = notes[position]
         holder.titleTextView.text = note.title
-        holder.contentTextView.text = note.content
+//        holder.contentTextView.text = note.content
         holder.checkBox.isChecked = selectedNotes.contains(position)
         holder.dateTextView.text = note.date
 
@@ -42,6 +43,7 @@ class NotesAdapter(
 
     override fun getItemCount() = notes.size
 
+    @Suppress("DEPRECATION")
     inner class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val titleTextView: TextView = itemView.findViewById(R.id.noteTitleTextView)
         val contentTextView: TextView = itemView.findViewById(R.id.noteContentTextView)
@@ -73,10 +75,9 @@ class NotesAdapter(
         notifyItemChanged(position)
     }
 
-    fun getSelectedNotes(): List<Note> {
-        return selectedNotes.map { notes[it] }
-    }
+    fun getSelectedNotes(): List<Note> = selectedNotes.map { notes[it] }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun clearSelection() {
         selectedNotes.clear()
         notifyDataSetChanged()
