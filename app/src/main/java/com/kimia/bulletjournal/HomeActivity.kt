@@ -1,4 +1,5 @@
 package com.kimia.bulletjournal
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
@@ -14,11 +15,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
+@Suppress("DEPRECATION")
 class HomeActivity : AppCompatActivity(), NotesAdapter.OnItemClickListener {
 
     private lateinit var logoutButton: ImageButton
     private lateinit var addNoteButton: ImageButton
     private lateinit var deleteNoteButton: ImageButton
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     private lateinit var switchDarkMode: Switch
     private lateinit var mAuth: FirebaseAuth
     private lateinit var notesRecyclerView: RecyclerView
@@ -76,13 +79,18 @@ class HomeActivity : AppCompatActivity(), NotesAdapter.OnItemClickListener {
         // Set listener for switch to change theme
         switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
+                // Dark mode
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             } else {
+                // Light mode
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
+
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    @Deprecated("This method has been deprecated in favor of using the Activity Result API\n      which brings increased type safety via an {@link ActivityResultContract} and the prebuilt\n      contracts for common intents available in\n      {@link androidx.activity.result.contract.ActivityResultContracts}, provides hooks for\n      testing, and allow receiving results in separate, testable classes independent from your\n      activity. Use\n      {@link #registerForActivityResult(ActivityResultContract, ActivityResultCallback)}\n      with the appropriate {@link ActivityResultContract} and handling the result in the\n      {@link ActivityResultCallback#onActivityResult(Object) callback}.")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
@@ -100,6 +108,7 @@ class HomeActivity : AppCompatActivity(), NotesAdapter.OnItemClickListener {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun loadNotes() {
         val userId = mAuth.currentUser?.uid ?: return
         firestore.collection("notes")
@@ -142,9 +151,10 @@ class HomeActivity : AppCompatActivity(), NotesAdapter.OnItemClickListener {
             .show()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun deleteSelectedNotes() {
         val selectedNotes = notesAdapter.getSelectedNotes()
-        val userId = mAuth.currentUser?.uid ?: return
+        val userid = mAuth.currentUser?.uid ?: return
         var deleteCount = 0
 
         for (note in selectedNotes) {
