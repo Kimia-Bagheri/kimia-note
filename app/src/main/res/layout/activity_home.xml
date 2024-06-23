@@ -12,7 +12,8 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/background4"
-        app:srcCompat="@drawable/background4" />
+        app:srcCompat="@drawable/background4"
+        tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,7 +34,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/icon2"
-            android:contentDescription="New Image" />
+            android:contentDescription="New Image"
+            tools:ignore="HardcodedText" />
         <!-- Title Image -->
         <TextView
             android:id="@+id/titleImage1"
@@ -45,7 +47,7 @@
             android:text="My Notes"
             android:textColor="#000"
             android:textSize="45sp"
-            />
+            tools:ignore="HardcodedText" />
 
         <!-- Delete Note Button Image -->
         <ImageButton
@@ -65,7 +67,8 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@id/deleteNoteButton"
-            android:background="#103457" />
+            android:background="#103457"
+            tools:ignore="ObsoleteLayoutParam" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/notesRecyclerView"
@@ -118,14 +121,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="48dp"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dark Mode"
             android:layout_marginTop="4dp"
-            android:textColor="#000" />
+            android:textColor="#000"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
     <!-- Add Note Button -->
