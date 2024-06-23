@@ -1,4 +1,5 @@
 package com.kimia.bulletjournal
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -17,10 +18,12 @@ import com.google.firebase.storage.StorageReference
 import java.util.*
 import kotlin.collections.HashMap
 
+@Suppress("DEPRECATION")
 class AddNoteActivity : AppCompatActivity() {
     private lateinit var noteTitleEditText: EditText
     private lateinit var noteContentEditText: EditText
     private lateinit var saveNoteButton: Button
+    private lateinit var backButton: ImageButton
     private lateinit var selectImageButton: ImageButton  // Change the type to ImageButton
     private lateinit var imagesRecyclerView: RecyclerView
     private lateinit var firestore: FirebaseFirestore
@@ -33,6 +36,7 @@ class AddNoteActivity : AppCompatActivity() {
     private var position: Int = -1
     private var note: Note? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_note)
@@ -40,6 +44,7 @@ class AddNoteActivity : AppCompatActivity() {
         noteTitleEditText = findViewById(R.id.noteTitleEditText)
         noteContentEditText = findViewById(R.id.noteContentEditText)
         saveNoteButton = findViewById(R.id.saveNoteButton)
+        backButton = findViewById(R.id.back_button)
         selectImageButton = findViewById(R.id.selectImageButton)  // Correct the type here
         imagesRecyclerView = findViewById(R.id.imagesRecyclerView)
         noteDateEditText = findViewById(R.id.noteDateEditText)
@@ -48,6 +53,12 @@ class AddNoteActivity : AppCompatActivity() {
         firestore = FirebaseFirestore.getInstance()
         storageReference = FirebaseStorage.getInstance().reference
         mAuth = FirebaseAuth.getInstance()
+
+
+        backButton.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
 
         imagesAdapter = ImagesAdapter(this, selectedImageUris) { position ->
             selectedImageUris.removeAt(position)
@@ -92,7 +103,7 @@ class AddNoteActivity : AppCompatActivity() {
                 if (selectedImageUris.isNotEmpty()) {
                     uploadImagesAndSaveNote(title, content)
                 } else {
-                    addNewNoteToFirestore(title, content, null)
+                    null.addNewNoteToFirestone(title, content)
                 }
             } else {
                 // Update existing note
@@ -112,6 +123,7 @@ class AddNoteActivity : AppCompatActivity() {
         startActivityForResult(intent, REQUEST_CODE_IMAGE_PICK)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_IMAGE_PICK && resultCode == Activity.RESULT_OK) {
@@ -235,7 +247,7 @@ class AddNoteActivity : AppCompatActivity() {
         }
     }
 
-    private fun addNewNoteToFirestore(title: String, content: String, imageUrl: String?) {
+    private fun String?.addNewNoteToFirestone(title: String, content: String) {
         val userId = mAuth.currentUser?.uid ?: return
         val date = noteDateEditText.text.toString().trim()
         val noteMap = hashMapOf(
@@ -243,12 +255,12 @@ class AddNoteActivity : AppCompatActivity() {
             "content" to content,
             "userId" to userId,
             "date" to date,
-            "imageUrls" to imageUrl,
+            "imageUrls" to this,
         )
         firestore.collection("notes")
             .add(noteMap)
             .addOnSuccessListener { documentReference ->
-                val note = Note(documentId = documentReference.id, title = title, content = content, userId = userId, date = date, imageUrl = imageUrl ?: "")
+                val note = Note(documentId = documentReference.id, title = title, content = content, userId = userId, date = date, imageUrl = this ?: "")
                 val resultIntent = Intent().apply {
                     putExtra("note", note)
                 }
@@ -256,7 +268,7 @@ class AddNoteActivity : AppCompatActivity() {
                 finish()
             }
             .addOnFailureListener { exception ->
-                Toast.makeText(this, "Error adding note: ${exception.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@AddNoteActivity, "Error adding note: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
