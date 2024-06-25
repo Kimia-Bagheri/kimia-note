@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/mysoul"
+            android:fontFamily="@font/newrocker"
             android:letterSpacing="0.0"
             android:text="Online"
             android:textColor="#000000"
@@ -56,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/mysoul"
+            android:fontFamily="@font/newrocker"
             android:letterSpacing="0.0"
             android:text="NoteBook"
             android:textColor="#000000"
@@ -72,11 +72,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:backgroundTint="#A19F91C2"
-            android:fontFamily="@font/mysoul"
+            android:fontFamily="@font/newrocker"
             android:text="sign in"
             android:textColor="#000"
             android:textSize="25sp"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText" /> <!-- دسترسی‌پذیری -->
 
         <!-- Sign Up Button -->
 
@@ -86,11 +86,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:backgroundTint="#D8C7ED"
-            android:fontFamily="@font/mysoul"
+            android:fontFamily="@font/newrocker"
             android:text="sign up"
             android:textColor="#000"
             android:textSize="25sp"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText" /> <!-- دسترسی‌پذیری -->
 
     </LinearLayout>
 
