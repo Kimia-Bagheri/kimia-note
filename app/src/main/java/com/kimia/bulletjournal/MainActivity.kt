@@ -3,12 +3,15 @@ package com.kimia.bulletjournal
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.kimia.bulletjournal.R
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         // Check if user is already logged in
         val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
